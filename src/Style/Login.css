@@ -1,0 +1,123 @@
+.customContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    background: linear-gradient(to right, #76ecd6, #94a3e9, #C471ED);
+    font-family: sans-serif;
+  }
+
+  .customLoginForm-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    margin-top: -12rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+ 
+  .customHeading {
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .customInput-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .customInput-label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .customInput-field {
+    width: 100%;
+    padding: 12px;
+    padding-right: 40px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+
+  .toggle-eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+  
+ .password-container {
+  position: relative;
+  width: 100%;
+}
+
+.customPassword-wrapper{
+  position: relative;
+}
+
+.password-input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 18px;
+  color: #555;
+}
+
+  .customForgot-password {
+    text-align: right;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 24px;
+    background: linear-gradient(to right, #58f3d6, #7084e2);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 11px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .success-message {
+    color: green;
+    margin-top: 10px;
+  }
+  
+  .signup-text {
+    margin: 20px 10px;
+    color: #8889da;
+  }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
