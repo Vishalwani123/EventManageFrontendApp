@@ -1,14 +1,14 @@
 
-import React from 'react';
+import React, {  } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
-import { useLocation } from 'react-router-dom';
+import { useLocation,  } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import '../Style/QRCodePage.css';
 
 const QRCodePage = () => {
   const location = useLocation();
   const { qrCodeValues, eventTitles } = location.state || {};
-  console.log("Event Title in QRCode Page ");
+
   if (!qrCodeValues || qrCodeValues.length === 0) {
     toast.error("Book Ticket First!", { toastId: 'book-ticket-error', hideProgressBar: true, autoClose: 800 });
   }

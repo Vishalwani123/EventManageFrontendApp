@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-management-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-management-frontend
+  template:
+    metadata:
+      labels:
+        app: event-management-frontend
+    spec:
+      containers:
+        - name: event-management-frontend
+          image: vishal0434/event-management-frontend:02
+          ports:
+            - containerPort: 80
+          env:
+            - name: REACT_APP_BACKEND_URL
+              value: "http://127.0.0.1:54444"
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: react-nginx-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-management-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: event-management-frontend
+  ports:
+    - name: tcp
+      port: 80
+      targetPort: 80

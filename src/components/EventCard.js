@@ -17,8 +17,7 @@ function EventCard({ event, ticketsLeft, onView, showBookingForm = false, bookin
         <p className="event-info"><strong>Location :</strong> {event.location}</p>
         <p className="event-info"><strong>Capacity :</strong> {event.capacity}</p>
         <p className="event-info"><strong>Tickets Left :</strong> {event.availableTicket}</p>
-        {/* <p>Tickets Left: {ticketsLeft !== undefined ? ticketsLeft : "N/A"}</p> */}
-        
+  
         {!showBookingForm && (
           <button className="view-button" onClick={() => onView(event.id)}>View</button>
         )}

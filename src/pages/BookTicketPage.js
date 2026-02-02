@@ -38,20 +38,14 @@ function BookTicketPage() {
       return;
     }
     const bookingDetails = { ticket: numberOfTickets }; 
-    
-    console.log("Booking Details:", bookingDetails); 
-    console.log("Event id is :", id);
+
     try {
       const responseData = await bookTicket(id, bookingDetails);
-      console.log("Booking Response Data:", responseData);
-
-      console.log("The Response Data is -------- "+responseData.qrCodes);
-      console.log("The Response Data is -------- "+responseData.eventTitle);
+      
       setTicketsLeft((prev) => (prev !== null ? prev - ticketsToBook : 0));
 
       toast.success(`${responseData.username} Booking is done for - ${responseData.eventTitle} `, {autoClose: 1000,}); 
 
-      console.log("Event Title - ", responseData.eventTitle);
       let qrCodeArray = responseData.qrCodes;
 
       if (typeof qrCodeArray === 'string') {
@@ -60,11 +54,12 @@ function BookTicketPage() {
 
       navigate('/qrcode', { state: { qrCodeValues: qrCodeArray, eventTitles: responseData.eventTitle }});
 
-  
+      setTimeout(() => {
+        navigate("/");
+      }, 10000);
     } 
     catch (error) {
       toast.error(`Booking Fail`, {autoClose: 1000,});
-      console.error("Error booking ticket:", error);
     }
   };
 
