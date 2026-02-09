@@ -90,20 +90,13 @@ function Footer() {
               <span><i className="bi bi-envelope" /> support@eventflow.com</span>
             </div>
           </div>
-          {/* <div className="footer__links">
-            <h3>Quick Links</h3>
-            <Link to="/#">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Sign Up</Link>
-            <Link to="/#events">Events</Link>
-          </div> */}
           <div className="footer__social">
             <h3>Follow Us</h3>
             <div className="footer__social-icons">
-              <a href="#" aria-label="Facebook"><i className="bi bi-facebook"></i></a>
-              <a href="#" aria-label="Twitter"><i className="bi bi-twitter-x"></i></a>
-              <a href="#" aria-label="Instagram"><i className="bi bi-instagram"></i></a>
-              <a href="#" aria-label="LinkedIn"><i className="bi bi-linkedin"></i></a>
+              <Link to="/#"><i className="bi bi-facebook"></i></Link>
+              <Link to="/#"><i className="bi bi-twitter"></i></Link>
+              <Link to="/#"><i className="bi bi-instagram"></i></Link>
+              <Link to="/#"><i className="bi bi-linkedin"></i></Link>
             </div>
           </div>
         </div>
