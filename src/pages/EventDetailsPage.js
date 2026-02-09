@@ -17,6 +17,7 @@ function EventDetailsPage() {
   }, []);
 
   useEffect(() => {
+    document.title = "Event";
     const token = localStorage.getItem('token');
     if (token) {
       try {

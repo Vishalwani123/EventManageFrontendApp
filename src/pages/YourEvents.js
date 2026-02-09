@@ -12,6 +12,7 @@ function YourEvents() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
+    document.title = "Your Events Dashboard";
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);

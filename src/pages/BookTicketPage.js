@@ -18,6 +18,7 @@ function BookTicketPage() {
   }, []);
 
   useEffect(() => {
+    document.title = "Book Event";
     const fetchEvent = async () => {
       const fetchedEvent = await getEventById(id);
       setEvent(fetchedEvent);

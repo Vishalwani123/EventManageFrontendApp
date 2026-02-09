@@ -20,6 +20,7 @@ const QRCodePage = () => {
   const items = useMemo(() => normalizeQRItems(qrCodeValues, eventTitles), [qrCodeValues, eventTitles]);
 
   useEffect(() => {
+    document.title = "QR-Code Dashboard";
     if (items.length === 0) {
       toast.error("Book Ticket First!", { toastId: 'book-ticket-error', hideProgressBar: true, autoClose: 800 });
     } else {
