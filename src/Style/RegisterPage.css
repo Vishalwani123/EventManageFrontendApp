@@ -1,16 +1,16 @@
-.customContainer {
+  .customContainer {
     display: flex;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(to right, #76ecd6, #94a3e9, #C471ED);
+    background: linear-gradient(135deg, #2a3548 0%, #364258 50%, #2d3a52 100%);
     font-family: sans-serif;
   }
   
   .customForm-container {
     background: #fff;
-    padding: 25px 28px;
+    padding: 20px 28px;
     border-radius: 16px;
-    margin-top: -4rem;
+    margin-top: 3rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 310px;
@@ -19,6 +19,7 @@
   
   .customHeading {
     margin-bottom: 15px;
+    margin-top: 7px;
     color: #333;
     text-align: center;
   }
@@ -54,7 +55,7 @@
     padding: 12px;
     border: none;
     border-radius: 24px;
-    background: linear-gradient(to right, #58f3d6, #7084e2);
+    background: linear-gradient(to right, #344056, #7084e2);
     color: #fff;
     font-weight: bold;
     cursor: pointer;

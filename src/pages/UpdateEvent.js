@@ -13,40 +13,56 @@ const UpdateEvent = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { event, id } = location.state || {};
-    
+
     const [formData, setFormData] = useState({
-        title: event.title,
-        description: event.description,
-        location: event.location,
-        startTime: event.startTime,
-        endTime: event.endTime,
-        capacity: event.capacity,
+        title: '',
+        description: '',
+        location: '',
+        startTime: '',
+        endTime: '',
+        capacity: '',
         img: null,
     });
 
 
-     useEffect(() => {
-        const token  = localStorage.getItem('token');
-        console.log("Token1------------------"+token);
-        
-        if (token ) {
-          try {
-             const decodedToken = jwtDecode(token);
-             const role = decodedToken.sub.split(":").pop();
+    useEffect(() => {
+        localStorage.setItem('visitedPage', 'updateEvent');
+    }, []);
 
-            if (role   && role  === 'ADMIN') {
-                setIsAdmin(true);
-            } else {
-                setError('You do not have permission to update an event.');
-            }
-          } catch (error) {
-            localStorage.removeItem('token');
-          }
+    useEffect(() => {
+        if (!event || !id) {
+            navigate('/', { replace: true });
+            return;
         }
-        else {
+        setFormData({
+            title: event.title ?? '',
+            description: event.description ?? '',
+            location: event.location ?? '',
+            startTime: event.startTime ?? '',
+            endTime: event.endTime ?? '',
+            capacity: event.capacity ?? '',
+            img: null,
+        });
+    }, [event, id, navigate]);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decodedToken = jwtDecode(token);
+                const role = decodedToken.sub.split(":").pop();
+                if (role && role === 'ADMIN') {
+                    setIsAdmin(true);
+                } else {
+                    setError('You do not have permission to update an event.');
+                }
+            } catch (err) {
+                localStorage.removeItem('token');
+            }
+        } else {
             setError('You must be logged in to update an event.');
         }
-      }, [location]);
+    }, [location]);
     
 
     const handleChange = (e) => {
@@ -73,7 +89,9 @@ const UpdateEvent = () => {
             const formDataToSend = new FormData();
         
             for (const key in formData) {
-                formDataToSend.append(key, formData[key]);
+                if (formData[key] !== null && formData[key] !== '' && formData[key] !== undefined) {
+                    formDataToSend.append(key, formData[key]);
+                }
             }
 
 
@@ -89,8 +107,8 @@ const UpdateEvent = () => {
     };
 
     return (
-        <div className="container">
-            <div className="form-container">
+        <div className="container" style={{ position: 'relative' }}>
+             <div className="form-container">
                 <h2 className="heading">Update Event</h2>
                 
                 <form onSubmit={handleSubmit}>
@@ -173,13 +191,12 @@ const UpdateEvent = () => {
                                 />
                             </div>
                             <div className="input-group">
-                                <label htmlFor="img" className="input-label">Upload New Image</label>
+                                <label htmlFor="img" className="input-label">Upload New Image (optional)</label>
                                 <input 
                                 type="file"
                                 accept="image/*"
                                 name="img"
                                 onChange={handleChange}
-                                required
                                 className="input-field"
                                 />
                             </div>
@@ -220,6 +237,5 @@ const UpdateEvent = () => {
         </div>
     );       
 };
-
 
 export default UpdateEvent;

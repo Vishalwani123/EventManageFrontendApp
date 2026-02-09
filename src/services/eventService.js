@@ -13,7 +13,6 @@ export const getEventById = async (id) => {
 };
 
 export const getEventsByuserId = async (userId) => {
-  console.log("Inside call part of userId");
   const res = await axios.get(`/api/events/get/userId/${userId}`);
   return res.data;
 };

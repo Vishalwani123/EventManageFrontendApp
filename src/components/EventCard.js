@@ -13,10 +13,10 @@ function EventCard({ event, ticketsLeft, onView, showBookingForm = false, bookin
       )}
       <div className="event-content">
         <h2 className="event-title">{event.title}</h2>
-        <p className="event-description">{event.description}</p>
+        <p className="event-description">{event.description.length > 50 ? event.description.substring(0, 50) + '...' : event.description}</p>
         <p className="event-info"><strong>Location :</strong> {event.location}</p>
         <p className="event-info"><strong>Capacity :</strong> {event.capacity}</p>
-        <p className="event-info"><strong>Tickets Left :</strong> {event.availableTicket}</p>
+        <p className="event-info"><strong>Tickets Left :</strong> {ticketsLeft != null ? ticketsLeft : event.availableTicket}</p>
   
         {!showBookingForm && (
           <button className="view-button" onClick={() => onView(event.id)}>View</button>

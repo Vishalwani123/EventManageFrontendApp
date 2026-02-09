@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { bookTicket  } from '../services/bookingService';
 import { toast } from 'react-toastify';
 import { getEventById } from '../services/eventService';
-import EventCard from '../components/EventCard';
+import '../Style/EventCard.css';
 import '../Style/BookingEvent.css';
 
 function BookTicketPage() {
@@ -14,14 +14,14 @@ function BookTicketPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("BookingPage ticketsLeft:", ticketsLeft);
-  }, [ticketsLeft]);
+    localStorage.setItem('visitedPage', 'bookTicket');
+  }, []);
 
   useEffect(() => {
     const fetchEvent = async () => {
       const fetchedEvent = await getEventById(id);
-      setEvent(fetchedEvent); 
-      setTicketsLeft(Number(fetchedEvent.capacity));
+      setEvent(fetchedEvent);
+      setTicketsLeft(Number(fetchedEvent.availableTicket ?? fetchedEvent.capacity));
     };
     fetchEvent();
   }, [id]);
@@ -53,10 +53,6 @@ function BookTicketPage() {
       }
 
       navigate('/qrcode', { state: { qrCodeValues: qrCodeArray, eventTitles: responseData.eventTitle }});
-
-      setTimeout(() => {
-        navigate("/");
-      }, 10000);
     } 
     catch (error) {
       toast.error(`Booking Fail`, {autoClose: 1000,});
@@ -64,37 +60,34 @@ function BookTicketPage() {
   };
 
   return (
-    <div className="booking -page-container">
-      <h2 className="booking-header">Book Your Ticket</h2>
-      <div className="event-card-container">
-          {event && ticketsLeft !== null && (
-            <EventCard
-              event={event}
-              ticketsLeft={ticketsLeft}
-              showBookingForm={true}
-              bookingForm={
-                <form onSubmit={handleSubmit} className="booking-form-inside-card">
-                  <div className="form-group">
-                    <label htmlFor="ticketNumber">Number of Tickets</label>
-                    <input
-                      id="ticketNumber"
-                      type="number"
-                      min="1"
-                      value={numberOfTickets}
-                      onChange={(e) => setNumberOfTickets(Number(e.target.value))}
-                      className="form-control booking-input"
-                      required
-                    />
-                  </div>
-                  <button type="submit" className="btn-book">Book Now</button>
-                </form>
-              }
-              onView={() => {}} 
-            />
-          )}
-      </div>
+    <div className="booking-page-container" style={{ position: 'relative' }}>
+      <button onClick={() => navigate(-1)} style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 10 }}>← Back</button>
+      {event && (
+        <div className="event-detail">
+          <h1>{event.title}</h1>
+          {event.img && <img src={`data:image/jpg;base64,${event.img}`} alt={event.title} />}
+          <p>{event.description}</p>
+          <p><strong>Location :</strong> {event.location}</p>
+          <p><strong>Capacity :</strong> {event.capacity}</p>
+          <p><strong>Available Ticket :</strong> {event.availableTicket}</p>
+          <form onSubmit={handleSubmit} className="booking-form">
+            <div className="form-group">
+              <label htmlFor="ticketNumber">Number of Tickets</label>
+              <input
+                id="ticketNumber"
+                type="number"
+                min="1"
+                value={numberOfTickets}
+                onChange={(e) => setNumberOfTickets(Number(e.target.value))}
+                className="form-control booking-input"
+                required
+              />
+            </div>
+            <button type="submit" className="btn-book">Book Now</button>
+          </form>
+        </div>
+      )}
     </div>
-
   );
 }
 

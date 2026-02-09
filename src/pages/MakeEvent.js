@@ -14,11 +14,9 @@ const MakeEvent = () => {
     const navigate = useNavigate();
     
 
-     useEffect(() => {
-        const token  = localStorage.getItem('token');
-        console.log("Token1------------------"+token);
-        
-        if (token ) {
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
           try {
              const decodedToken = jwtDecode(token);
              const role = decodedToken.sub.split(":").pop();
@@ -69,9 +67,6 @@ const MakeEvent = () => {
             }
 
             await createEvent(formDataToSend, token);
-            console.log("Event Created Successfully.........!");
-            console.log("FormData is here-----------------"+formData.title+formData.capacity);
-            console.log("Image is here----------"+ formData.image);
             setSuccess('Create Event Successfull.');
             setTimeout(() => navigate('/'), 500);
         } catch (err) {
@@ -211,6 +206,5 @@ const MakeEvent = () => {
         </div>
     );       
 };
-
 
 export default MakeEvent;

@@ -1,19 +1,21 @@
 .event-card {
-  background-color: white;
+  background: linear-gradient(180deg, #e8ecf4 0%, #dfe3ed 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
 }
 
 .event-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .event-image {
@@ -21,123 +23,145 @@
   height: 180px;
   object-fit: cover;
   display: block;
+  border-bottom: 1px solid rgba(30, 42, 74, 0.1);
 }
 
 .event-content {
-  padding: 16px 23px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .event-title {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   margin: 0 0 8px 0;
-  color: #222;
+  color: #1e2a4a;
   font-weight: 700;
+  line-height: 1.3;
 }
 
 .event-description {
-  font-size: 1rem;
-  margin: 0 0 0 0;
-  color: #555;
+  font-size: 0.95rem;
+  margin: 0;
+  color: #4a5568;
   flex-grow: 1;
+  line-height: 1.45;
 }
 
 .event-info {
   font-size: 0.9rem;
-  color: #777;
+  color: #5a6578;
   margin: 4px 0;
 }
 
+.event-info strong {
+  color: #2d3a5f;
+}
+
 .view-button {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #344056 0%, #8b5cf6 100%);
   border: none;
-  color: white;
+  color: #fff;
   font-weight: 600;
-  padding: 10px 14px;
-  border-radius: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
+  margin-top: 12px;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.35);
 }
 
 .view-button:hover {
-  background-color: #0056b3;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5);
+  transform: scale(1.02);
 }
 
 .event-detail {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 380px;
+  background: linear-gradient(180deg, #e8ecf4 0%, #dfe3ed 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  margin: 5rem auto;
+  padding-bottom: 1rem;
   transition: box-shadow 0.3s ease;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
 }
 
 .event-detail:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
 .event-detail h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
-  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: #1e2a4a;
   text-align: center;
-  padding-top: 10px;
+  padding: 0rem;
 }
 
 .event-detail img {
   width: 100%;
-  height: auto;
-  border-radius: 4px;
+  max-height: 300px;     
+  height: auto;          
+  object-fit: contain;   
+  display: block;
+  margin: 0 auto;        
+  border-bottom: 1px solid rgba(30, 42, 74, 0.1);
 }
 
+
 .event-detail p {
-  font-size: 16px;
-  color: #555;
-  margin: 5px;
+  font-size: 0.95rem;
+  color: #4a5568;
+  margin: 6px 1rem;
   text-align: center;
 }
 
 .event-detail strong {
-  color: #333;
+  color: #2d3a5f;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1.25rem;
+  padding: 0 1rem;
 }
 
 .event-detail button {
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 10px 15px;
+  border-radius: 8px;
+  padding: 10px 18px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 0 10px;
-  margin-bottom: 12px;
-  padding-bottom: 10px;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-.event-detail .updateEvent{
-  background-color: #007bff;
+.event-detail .updateEvent {
+  background: linear-gradient(135deg, #344056 0%, #8b5cf6 100%);
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.35);
 }
 
-.event-detail .deleteEvent{
-  background-color: #ef020e;
-}
-.event-detail .updateEvent:hover{
-  background-color: #03468e;
+.event-detail .updateEvent:hover {
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5);
+  transform: scale(1.02);
 }
 
-.event-detail .deleteEvent:hover{
-  background-color: #7f1502;
+.event-detail .deleteEvent {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 2px 12px rgba(220, 38, 38, 0.35);
+}
+
+.event-detail .deleteEvent:hover {
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.5);
+  transform: scale(1.02);
 }

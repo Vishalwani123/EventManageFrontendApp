@@ -21,7 +21,7 @@ const LoginPage = () => {
             localStorage.setItem('token', data.jwt);
             localStorage.setItem('userName', data.userName);
             localStorage.setItem('userId', data.userId);
-            toast.success(`Login Successfull`, {autoClose: 800, hideProgressBar: true});
+            toast.success(`Login Successful`, {autoClose: 800, hideProgressBar: true});
             setTimeout(() => navigate('/'), 300);
         } catch (err) {
             toast.error('Invalid username or password', {autoClose: 800, hideProgressBar: true});
@@ -31,7 +31,7 @@ const LoginPage = () => {
     
 
     return (
-        <div className="customContainer">
+        <div className="customContainer" style={{ backgroundColor: '#f0f4f8' }}>
             <div className="customLoginForm-container">
                 <h2 className="customHeading">Login</h2>
                 <form onSubmit={handleSubmit}>
@@ -73,7 +73,7 @@ const LoginPage = () => {
                 </form>
 
                 <Link className="signup-text" to="/register">
-                  or SignUp
+                     SignUp
                 </Link>
                 
             </div>

@@ -13,15 +13,12 @@ const RegisterPage = () => {
     const navigate = useNavigate();
     
     const handleChange = (e) => {
-        console.log("FormData is - ", e.target.name);
         setFormData({...formData, [e.target.name]: e.target.value});
         if(e.target.name === "confirmPassword") setConfirmPass(e.target.value);   
     };
 
 
     const handleSubmit = async (e) => {
-        console.log("The Password is -- ", formData.password);
-        console.log("The Confirm-Password is -- ", confirmPass);
         e.preventDefault();
         setError('');
         setSuccess('');
@@ -37,18 +34,19 @@ const RegisterPage = () => {
             }
            
         } catch (err) {
-            toast.success(`Registration failed.`, {autoClose: 800, hideProgressBar: true});
-            setError(err.response?.data || 'Registration failed');
+            toast.error(`Registration failed.`, {autoClose: 800, hideProgressBar: true});
+            const msg = err.response?.data;
+            setError(typeof msg === 'string' ? msg : msg?.message || 'Registration failed');
         }
     };
 
     return (
         <div className="customContainer">
             <div className="customForm-container">
-                <h3 className="customHeading">Register</h3>
+                <h2 className="customHeading">Register</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="customInput-group">
-                        <label htmlFor="username" className="customInput-label">Username</label>
+                        <label htmlFor="username" className="customInput-label">User</label>
                         <input 
                         type="text"
                         name="username"

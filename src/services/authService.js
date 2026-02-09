@@ -7,7 +7,6 @@ const registerUser = async (userData) => {
 
 const loginUser = async (credentials) => {
     const response = await api.post('/api/auth/login', credentials);
-    localStorage.setItem("user", JSON.stringify(credentials));
     return response.data;
 };
 

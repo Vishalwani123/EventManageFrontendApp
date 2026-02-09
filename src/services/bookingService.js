@@ -16,16 +16,13 @@ export const bookTicket = async (id, bookingDetails) => {
 
 export const getTicket = async () => {
   try {
-    console.log("Start 2");
     const res = await axios.get("/api/bookings/user/tickets", {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
     });
-    console.log("Start 3");
-    return res.data; 
+    return res.data;
   } catch (error) {
-    console.log("End 1");
-    throw error; 
+    throw error;
   }
 };

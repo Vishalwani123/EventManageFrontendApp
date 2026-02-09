@@ -1,6 +1,6 @@
 .qr-code-container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 5rem auto;
   padding: 30px;
   background-color: #f9f9f9;
   border-radius: 16px;
@@ -32,6 +32,17 @@
   transition: transform 0.3s ease;
   cursor: pointer;
   width: 180px;
+}
+
+.qr-code-item h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .qr-code-item:hover {
